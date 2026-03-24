@@ -608,6 +608,18 @@ Professional systems often include:
 Answer the following:
 
 1. What is the difference between checked and unchecked exceptions?
+
+Checked exceptions are exceptions that must be handled/declared in a method using either `try-catch`, or `throws`. Unchecked exceptions don't really require explicit handling and typically would represent programming errors like null pointers or invalid indexes. They're main difference is that checked exceptions are done at the compiling time, and unchecked exceptions occur at the runtime.
+
 2. When should you create a custom exception?
+
+You should create a custom exception to represent specific errors related to your application's logic that built-in exceptions don't or can't clearly describe. Custom exceptions make code more readable and can help be more exact in communicating exactly
+what went wrong.
+
 3. Why is exception translation useful in layered systems?
+
+Exception translation is useful because it hides low-level implementation details and replaces them with more meaningful exceptions. This helps keeps layers independent and it also makes errors easier to understand. A good example is thinking of how a database error can be translated into an AlertStorageException so the rest of the application doesn’t depend on specific errors that revolve around that database.
+
 4. How can the Observer pattern improve error reporting?
+
+The Observer pattern allows multiple components to be notified when an event (like an error or alert) occurs. It improves error reporting because different observers can handle the same event in different ways, like logging, sending notifications, or displaying messages. It does this without tightly coupling them to the main system too.
