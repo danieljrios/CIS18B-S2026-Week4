@@ -1,13 +1,45 @@
 package edu.norcocollege.cis18b.weekx.mini04;
 
-public class AlertValidationApp {
-    public static void main(String[] args) {
-        AlertValidator validator = new AlertValidator();
+// --------------------------------------------------------------------
+// Demonstrates fail-fast validation by immediately checking alert data
+// and throwing a custom exception if it's invalid. Validation here is
+// separated into its own class like the README suggests for us.
+// --------------------------------------------------------------------
+public class AlertValidationApp 
+{
+    // Create one valid alert and one invalid alert for demonstration
+    public static void main(String[] args) 
+    {
+        // Valid alert
+        Alert validAlert = new Alert(1, "System OK", AlertLevel.INFO);
 
-        Alert validAlert = new Alert(1, "CPU usage high", AlertLevel.WARNING);
-        Alert invalidAlert = new Alert(2, "   ", null);
+        // Invalid alert (blank message + null level)
+        Alert invalidAlert = new Alert(2, "", null);
 
-        // TODO: Validate the valid alert and print a success message.
-        // TODO: Validate the invalid alert and print the exception message.
+        // Test valid alert
+        try 
+        {
+            AlertValidator.validate(validAlert);
+            System.out.println("Valid alert passed validation.");
+        } catch (InvalidAlertException e) 
+        {
+            System.out.println("Valid alert failed: " + e.getMessage());
+        }
+
+        // Test invalid alert
+        try 
+        {
+            AlertValidator.validate(invalidAlert);
+            System.out.println("Invalid alert passed validation.");
+        } catch (InvalidAlertException e) 
+        {
+            System.out.println("Invalid alert: " + e.getMessage());
+        }
     }
 }
+
+// Test builds and runs successfully with:
+/*
+mvn -f week4-exercises/mini04-fail-fast-validation/pom.xml clean compile
+mvn -f week4-exercises/mini04-fail-fast-validation/pom.xml exec:java
+*/

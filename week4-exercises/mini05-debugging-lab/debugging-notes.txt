@@ -1,1 +1,19 @@
-TODO: Replace this text with your debugging notes.
+Debugging notes:
+
+For DebuggingDemo.java, the bug was in the "for loop" condition.
+The loop used i <= alerts.length, which caused the program to try to access alerts[3].
+Since the array only has the indexes 0 through 2, 
+it ended up causing ArrayIndexOutOfBoundsException. 
+I found the problem by checking the loop condition and seeing that the final iteration 
+allowed i to equal the array length. 
+It was fixed by changing the condition from i <= alerts.length to 
+i < alerts.length, which stops the loop before an accessing an invalid index.
+
+The code ran and passed the tests with:
+mvn -f week4-exercises/mini05-debugging-lab/pom.xml clean compile
+mvn -f week4-exercises/mini05-debugging-lab/pom.xml exec:java
+
+Example output:
+[stdout] Processing alert: CPU High
+[INFO] [stdout] Processing alert: Disk Full
+[INFO] [stdout] Processing alert: Login Failure
