@@ -2,14 +2,19 @@ package edu.norcocollege.cis18b.weekx.mini10;
 
 import java.util.List;
 
-public class AlwaysFailRepository implements AlertRepository {
+// Simulates a repository that always fails when saving
+public class AlwaysFailRepository implements AlertRepository 
+{
     @Override
-    public void save(Alert alert) throws AlertStorageException {
-        // TODO: Always throw AlertStorageException.
+    public void save(Alert alert) throws AlertStorageException 
+    {
+        // Always throw an exception to simulate failure
+        throw new AlertStorageException("Simulated repository failure.");
     }
 
     @Override
-    public List<Alert> findAll() {
+    public List<Alert> findAll() 
+    {
         return List.of();
     }
 }
