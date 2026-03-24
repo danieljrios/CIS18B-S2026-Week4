@@ -1,6 +1,9 @@
 package edu.norcocollege.cis18b.weekx.mini03;
 
-/* TODO: Make this an enum */
-public class AlertLevel {
-    // TODO: Add at least INFO, WARNING, and CRITICAL.
+// Enum representing allowed alert severity levels
+public enum AlertLevel 
+{
+    INFO,
+    WARNING,
+    CRITICAL
 }
